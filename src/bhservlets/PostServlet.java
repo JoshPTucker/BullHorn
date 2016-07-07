@@ -46,12 +46,17 @@ public class PostServlet extends HttpServlet {
 		 HttpSession session = request.getSession();
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		//String nextURL = "/home.jsp";
 		Bhuser user= (Bhuser) session.getAttribute("user");
+		Bhpost usrpost =new Bhpost();
+		usrpost.setPosttext(request.getParameter("userpost"));
+		usrpost.setBhuser(user);
+		//usrpost.setPostdate();
+		String nextURL = "/home.jsp";
+		PostsUtil.insert(usrpost);
 		//String useremail = request.getParameter("")
 		ArrayList<Bhpost> userposts=new ArrayList<Bhpost>();
 		userposts.addAll(PostsUtil.postsofUser(user.getUseremail()));
-	String nextURL="/home.jsp";
+		
 		out.print(user.getUseremail());
 		
 		//String post = request.getParameter("userpost");

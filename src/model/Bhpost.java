@@ -15,6 +15,8 @@ public class Bhpost implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@SequenceGenerator(name="BHPOST_POSTID_GENERATOR", sequenceName="BHPOST_SEQ")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="BHPOST_POSTID_GENERATOR")
 	private long postid;
 
 	@Temporal(TemporalType.DATE)

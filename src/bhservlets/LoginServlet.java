@@ -70,9 +70,9 @@ public class LoginServlet extends HttpServlet {
             if (User.isValidUser(user)){
                 session.setAttribute("user", user);
                 
-                int size = 30;
+                int size = 100;
                 String gravatarURL = User.getGravatarURL("jptucker2009@gmail.com", size);
-                 System.out.println(gravatarURL);
+               //  System.out.println(gravatarURL);
                 session.setAttribute("gravatarURL", gravatarURL);
                 nextURL = "/home.jsp";
             }else{

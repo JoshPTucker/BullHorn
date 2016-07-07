@@ -18,14 +18,17 @@
     <ul class="nav navbar-nav ">
       <li class="active"><a href="http://localhost:8080/BullHorn/home.jsp">Home</a></li>
       <li><a href="http://localhost:8080/BullHorn/Newsfeed">news feed</a></li>
-      <li><a href="#">Profile</a></li> 
+      <li><a href="#"></a></li> 
       <li><a href="https://www.google.com">google</a></li> 
     </ul>
   </div>
 </nav>
+<img src=gravatarURL></img>
 <form action="PostServlet" method="get">
-<textarea name="userpost" id="userpost" placeholder="Write post here"></textarea>>
+
+<textarea name="userpost" id="userpost" placeholder="Write post here"></textarea>
 <input type="submit" name ="submit" id="submit" value="submit"></input>
+
 </form>
 
 	<table class="table table-bordered table-striped table-hover">
