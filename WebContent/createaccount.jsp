@@ -8,28 +8,38 @@
 <jsp:include page="bootstrap.jsp"></jsp:include>
 </head>
 <body>
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">BullHorn</a>
-    </div>
-    <ul class="nav navbar-nav ">
-      <li class="active"><a href="http://localhost:8080/BullHorn/home.jsp">Home</a></li>
-      <li><a href="http://localhost:8080/BullHorn/newsfeed.jsp">news feed</a></li>
-      <li><a href="#">Page 2</a></li> 
-      <li><a href="https://www.google.com">google</a></li> 
-    </ul>
-  </div>
-</nav>
+	<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">BullHorn</a>
+		</div>
+		<ul class="nav navbar-nav ">
+			<li class="active"><a
+				href="http://localhost:8080/BullHorn/home.jsp">Home</a></li>
+		</ul>
+	</div>
+	</nav>
 	<p>You are about to make an account</p>
+	<div align="center" style="background-color:powderblue">
 	<form action="AddUser" method="post">
-		<input type="text" name="username" id="username" value=""
-			placeholder="User Name"></input> <input type="text" name="email"
-			id="email" value="" placeholder="email"></input> <input
-			type="password" name="password" id="password" value=""
-			placeholder="password"></input> <input type="hidden"
-			name="secretvalue" id="secretvalue" value="loginForm"></input> <input
-			type="submit" name="submit" id="submit" value="create"></input>
+		<fieldset>
+			<input type="text" name="username" id="username" value=""
+				placeholder="User Name"></input>
+		</fieldset>
+		<fieldset>
+			<input type="text" name="email" id="email" value=""
+				placeholder="email"></input>
+		</fieldset>
+		<fieldset>
+			<input type="password" name="password" id="password" value=""
+				placeholder="password"></input>
+		</fieldset>
+		<fieldset>
+			<input type="hidden" name="secretvalue" id="secretvalue"
+				value="loginForm"></input> <input type="submit" name="submit"
+				id="submit" value="create"></input>
+		</fieldset>
 	</form>
+	</div>
 </body>
 </html>

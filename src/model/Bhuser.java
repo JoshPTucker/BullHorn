@@ -16,7 +16,11 @@ public class Bhuser implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@SequenceGenerator(name="BHUSER_BHUSERID_GENERATOR", sequenceName="BHUSER_SEQ", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="BHUSER_BHUSERID_GENERATOR")
 	private long bhuserid;
+
+	private String gravatarurl;
 
 	@Temporal(TemporalType.DATE)
 	private Date joindate;
@@ -28,6 +32,7 @@ public class Bhuser implements Serializable {
 	private String username;
 
 	private String userpassword;
+	
 
 	//bi-directional many-to-one association to Bhpost
 	@OneToMany(mappedBy="bhuser")
@@ -42,6 +47,14 @@ public class Bhuser implements Serializable {
 
 	public void setBhuserid(long bhuserid) {
 		this.bhuserid = bhuserid;
+	}
+
+	public String getGravatarurl() {
+		return this.gravatarurl;
+	}
+
+	public void setGravatarurl(String gravatarurl) {
+		this.gravatarurl = gravatarurl;
 	}
 
 	public Date getJoindate() {

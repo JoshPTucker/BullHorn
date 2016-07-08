@@ -2,7 +2,9 @@ package bhservlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,9 +49,11 @@ public class PostServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		Bhuser user= (Bhuser) session.getAttribute("user");
+		//Date gDate = ;
 		Bhpost usrpost =new Bhpost();
 		usrpost.setPosttext(request.getParameter("userpost"));
 		usrpost.setBhuser(user);
+	//	usrpost.setPostdate(gDate);
 		//usrpost.setPostdate();
 		String nextURL = "/home.jsp";
 		PostsUtil.insert(usrpost);

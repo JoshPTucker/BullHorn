@@ -7,15 +7,29 @@
 <title>Login Page</title>
 <jsp:include page="bootstrap.jsp"></jsp:include>
 </head>
-<body>
+<body style="background-color: skyblue">
 
-<h1 align="center">Log in</h1>
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">BullHorn</a>
+    </div>
+    <ul class="nav navbar-nav ">
+    </ul>
+  </div>
+</nav>
+<h1 align="center">Welcome To BullHorn</h1>
+<div align="center" style="background-color:powderblue">
 <form action="LoginServlet" method="post">
-		<input type="text" name="email" id="email" value="" placeholder="email"></input> <input
-			type="password" name="password" id="password" value="" placeholder="password"></input> <input
-			type="hidden" name="secretvalue" id="secretvalue" value="loginForm"></input>
-		<input type="submit" name="submit" id="submit" value="Log in"></input>
-		
-	</form>
+<fieldset>
+<input type="text" name="email" id="email" value="" placeholder="email"></input>
+</fieldset>
+<fieldset>
+<input type="password" name="password" id="password" value="" placeholder="password"></input>
+</fieldset>
+		<input type="hidden" name="secretvalue" id="secretvalue" value="loginForm"></input>
+		<input type="submit" name="submit" id="submit" value="Log in"></input>	
+</form>
+</div>
 </body>
 </html>

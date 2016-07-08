@@ -9,7 +9,7 @@
 <title>News Feed</title>
 <jsp:include page="bootstrap.jsp"></jsp:include>
 </head>
-<body>
+<body style="background-color: skyblue">
 <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -27,11 +27,12 @@
 	<%-- 	Posts ${posts} --%>
 	<table class="table table-bordered table-striped table-hover">
     <thead>
-        <tr><th>User</th><th>Post</th><th>Date</th></tr>
+        <tr><th> </th><th>User</th><th>Post</th><th>Date</th></tr>
     </thead>
     <tbody>
     <c:forEach var="post" items="${posts}">
-        <tr><td><c:out value="${post.bhuser.useremail}"/></td>
+        <tr><td><img src="${post.bhuser.gravatarurl}"></img></td>
+        <td><c:out value="${post.bhuser.username}"/></td>
         <td><c:out value="${post.posttext}"/></td>
         <td><fmt:formatDate value="${post.postdate}" pattern="yy-MMM-dd"/></td>
         </tr>

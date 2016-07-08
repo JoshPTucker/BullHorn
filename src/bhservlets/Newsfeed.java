@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import customTools.Gravatar;
 import customTools.PostsUtil;
+import customTools.User;
 import model.Bhpost;
 
 /**
@@ -50,7 +51,18 @@ public class Newsfeed extends HttpServlet {
 		ArrayList<Bhpost> posts=new ArrayList<Bhpost>();
 	//	long userid=(long) session.getAttribute("user");
 		posts.addAll(PostsUtil.bhPost());
+//		ArrayList<Gravatar>gravatars=new ArrayList<Gravatar>();
+//		
+//		for ( Bhpost p:posts){
+//			Gravatar g = new Gravatar();
+//			g.setGravatarPost(p, 80);
+//			gravatars.add(g);
+//		}
 		String nextURL = "/newsfeed.jsp";
+		
+	//	long userid=(long) session.getAttribute("user");
+		
+		//session.setAttribute("gravatars", gravatars);
 		 session.setAttribute("posts", posts);
 		//request.setAttribute("posts", posts);
 		//request.getRequestDispatcher(nextURL).forward(request,response);

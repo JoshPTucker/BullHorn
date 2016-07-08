@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import customTools.Gravatar;
 import customTools.User;
 import model.Bhuser;
 
@@ -31,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request,response);
 	}
 
 	/**
@@ -42,7 +43,7 @@ public class LoginServlet extends HttpServlet {
         //this page does not require user to be logged in
         String useremail = request.getParameter("email");
         String userpassword = request.getParameter("password");
-        String action = request.getParameter("action");
+       String action = request.getParameter("action");
         //String remember = request.getParameter("remember");
         String nextURL = "/error.jsp";
         
@@ -60,20 +61,25 @@ public class LoginServlet extends HttpServlet {
         //only add the user to the session if the user if valid.
         //The presence of the user is used to determine who 
         //owns the site and will be used to connect to the database
-        action="login";
+      action="login";
         if (action.equals("logout")){
-            session.invalidate();
-            nextURL = "/login.html";
+            nextURL = "/logout.jsp";
             
         }else{
             user = User.getUserByEmail(useremail);
-            if (User.isValidUser(user)){
-                session.setAttribute("user", user);
+            if (User.isValidUser(user)&&userpassword.equals(user.getUserpassword())){
+               
+            	int size = 80;
+            	String gravatarurl= Gravatar.setGravatarUser(user, size);
+            	
+            	user.setGravatarurl(gravatarurl);
+            	User.update(user);
+            	session.setAttribute("user", user);
+                session.setAttribute("profilepic", user.getGravatarurl() );
                 
-                int size = 100;
-                String gravatarURL = User.getGravatarURL("jptucker2009@gmail.com", size);
-               //  System.out.println(gravatarURL);
-                session.setAttribute("gravatarURL", gravatarURL);
+         
+              //  System.out.println(gravatarURL);
+                //session.setAttribute("gravatarURL", user.getGravatarurl());
                 nextURL = "/home.jsp";
             }else{
                 nextURL = "/createaccount.jsp";

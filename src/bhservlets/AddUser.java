@@ -7,6 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import customTools.User;
+import model.Bhuser;
 /**
  * Servlet implementation class AddUser
  */
@@ -39,10 +42,13 @@ public class AddUser extends HttpServlet {
 		String useremail = request.getParameter("email");
 		String userpassword = request.getParameter("password");
 		String username=request.getParameter("username");
-		out.println(useremail);
-		out.println(userpassword);
-		out.println(username);
-		
+		Bhuser newuser=new Bhuser();
+		newuser.setUseremail(useremail);
+		newuser.setUsername(username);
+		newuser.setUserpassword(userpassword);
+		User.insert(newuser);
+		String nextURL = "/login.jsp";
+		response.sendRedirect(request.getContextPath() + nextURL);
 	}
 
 }
