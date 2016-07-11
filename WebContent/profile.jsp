@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Profile</title>
 <jsp:include page="bootstrap.jsp"></jsp:include>
 </head>
 <body style="background-color: skyblue">
@@ -18,31 +18,30 @@
     <ul class="nav navbar-nav ">
       <li class="active"><a href="http://localhost:8080/BullHorn/home.jsp">Home</a></li>
       <li><a href="http://localhost:8080/BullHorn/Newsfeed">news feed</a></li>
-      <li><a href="#"></a></li> 
       <li><a href="#">Logout</a></li> 
     </ul>
   </div>
 </nav>
 <div class="container" style="background-color:magenta" align="center">
-<a href="http://localhost:8080/BullHorn/profile.jsp"><img src="${gravatarURL }" align="left"></img></a>
-<form action="PostServlet" method="post">
-<fieldset>
-
-<textarea name="userpost" id="userpost" placeholder="Write post here" rows=6 cols= 30 maxlength= 140></textarea>
-</fieldset>
-<fieldset>
-<input type="submit" name ="submit" id="submit" value="submit"></input>
-</fieldset>
+<a href="http://localhost:8080/BullHorn/profile.jsp"><img src="${profilepic }" align="left"></img></a>
+</div>
+<div>
+<h1 align="center">Stats</h1>
+<p>Folowers</p>
+<p>Following</p>
+<form action="LogoutServlet" method="post">
+<input type="submit" name="submit" id="submit" value="Logout">
 </form>
 </div>
 <div>
+<h1>All your posts</h1>
 	<table class="table table-bordered table-striped table-hover" style="background-color:lightblue">
     <thead>
         <tr><th> </th><th>User</th><th>Post</th><th>Date</th></tr>
     </thead>
     <tbody>
     <c:forEach var="userposts" items="${userposts}">
-        <tr><td><img src="${gravatarURL }"></td>
+        <tr><td><img src="${userposts.bhuser.gravatarurl}"></img></td>
         <td><c:out value="${userposts.bhuser.useremail}"/></td>
         <td><c:out value="${userposts.posttext}"/></td>
         <td><fmt:formatDate value="${userposts.postdate}" pattern="yy-MMM-dd"/></td>

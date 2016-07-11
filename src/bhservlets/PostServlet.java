@@ -3,9 +3,12 @@ package bhservlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import java.util.ArrayList;
-import java.util.Date;
 
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,11 +52,18 @@ public class PostServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		Bhuser user= (Bhuser) session.getAttribute("user");
-		//Date gDate = ;
+	
+		
+
+		   DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		   //get current date time with Date()
+		   Date date = new Date();
+		   //System.out.println(dateFormat.format(date));
 		Bhpost usrpost =new Bhpost();
 		usrpost.setPosttext(request.getParameter("userpost"));
 		usrpost.setBhuser(user);
-	//	usrpost.setPostdate(gDate);
+			
+		usrpost.setPostdate(date);
 		//usrpost.setPostdate();
 		String nextURL = "/home.jsp";
 		PostsUtil.insert(usrpost);
